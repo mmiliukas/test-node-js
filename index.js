@@ -6,6 +6,12 @@ express()
   .get('/a/b/c/d', (req, res) => {
      res.redirect('../../');
   })
+  .get('/alio', (req, res) => {
+     res.send([
+       '<title>' + 'A'.repeat(4000) + '</title>',
+       '<meta name="description" content="' + 'B'.repeat(4000) + '" />',
+     ].join(''));
+  })
   .get('*', (req, res) => {
     const h1 = JSON.stringify(req.headers, null, 2);
     const h2 = JSON.stringify(req.rawHeaders, null, 2);
