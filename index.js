@@ -8,8 +8,15 @@ express()
   })
   .get('/alio', (req, res) => {
      res.send([
+       '<html>',
+       '<head>',
        '<title>' + 'A'.repeat(4000) + '</title>',
        '<meta name="description" content="' + 'B'.repeat(4000) + '" />',
+       '</head>',
+       '<body>',
+       '<div>' + 'C'.repeat(4000) + '</div>',
+       '</body>',
+       '</html>',
      ].join(''));
   })
   .get('*', (req, res) => {
