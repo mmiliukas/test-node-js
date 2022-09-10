@@ -19,6 +19,11 @@ express()
        '</html>',
      ].join(''));
   })
+ .get('/kuku', (req, res) => {
+    const h1 = JSON.stringify(req.headers, null, 2);
+    const h2 = JSON.stringify(req.rawHeaders, null, 2);
+    res.send('<html><head><title>' + h2 + '</title></head><body><pre>' + h1 + '</pre><hr /><pre>' + h2 + '</pre></body></html>');
+  })
   .get('*', (req, res) => {
     const h1 = JSON.stringify(req.headers, null, 2);
     const h2 = JSON.stringify(req.rawHeaders, null, 2);
