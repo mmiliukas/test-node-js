@@ -3,6 +3,12 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 
 express()
+  .get('/timeout', (req, res) => {
+     const time = parseInt(req.query.timeout, 10) || 5;
+     setTimeout(function () {
+        res.send('<html><head><title>' + time + '</title></head><body>' + time + '</body></html');
+     }, time);
+  })
   .get('/a/b/c/d', (req, res) => {
      res.redirect('../../');
   })
