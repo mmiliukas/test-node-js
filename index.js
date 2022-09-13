@@ -3,6 +3,14 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 
 express()
+  .get('/redirect/:times', (req, res) => {
+    const times = parseInt(req.params.times, 10) || 0;
+    if (times > 0) {
+      res.redirect('/redirect/' + (times - 1));
+    } else {
+      res.send('<html><head><title>redirected</title></head><body>redirected</body></html');  
+    }
+  })
   .get('/timeout', (req, res) => {
      const time = parseInt(req.query.timeout, 10) || 5;
      setTimeout(function () {
