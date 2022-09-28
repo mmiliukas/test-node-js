@@ -3,6 +3,12 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 
 express()
+  .get('/robots.txt', (req, res) => {
+    res.send(`
+User-agent: *
+Disallow: /
+`);
+  })
   .get('/svg-script', (req, res) => {
     res.setHeader('content-type', 'image/svg+xml');
     res.send(`<?xml version="1.0" encoding="utf-8"?>
