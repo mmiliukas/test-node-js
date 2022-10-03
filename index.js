@@ -10,6 +10,7 @@ const options = {
     Accept: 'text/html',
     'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
   },
+  maxContentLength: 3 * 1024 * 1024,
   maxRedirects: 5,
 };
 
@@ -25,6 +26,7 @@ express()
           twitterTitle: result.data.includes('twitter:title'),
           ogDescription: result.data.includes('og:description'),
           twitterDescription: result.data.includes('twitter:description'),
+          msid: result.data.includes('Meta-Site-Id'),
         });
       })
       .catch((error) => {
