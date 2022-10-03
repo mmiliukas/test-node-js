@@ -22,7 +22,7 @@ express()
           ogImage: result.data.includes('og:image'),
           twitterImage: result.data.includes('twitter:image'),
           ogTitle: result.data.includes('og:title'),
-          twitterTitle: result.data.incldues('twitter:title'),
+          twitterTitle: result.data.includes('twitter:title'),
           ogDescription: result.data.includes('og:description'),
           twitterDescription: result.data.includes('twitter:description'),
         });
