@@ -1,8 +1,36 @@
 const express = require('express')
+const axios = require('axios');
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
+const options = {
+  timeout: 9000,
+  responseType: 'text',
+  headers: {
+    Accept: 'text/html',
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36',
+  },
+  maxRedirects: 5,
+};
+
 express()
+  .get('/check', (req, res) => {
+    axios
+      .get(req.query.url, options)
+      .then(result => {
+        res.json({
+          ogImage: result.data.includes('og:image'),
+          twitterImage: result.data.includes('twitter:image'),
+          ogTitle: result.data.includes('og:title'),
+          twitterTitle: result.data.incldues('twitter:title'),
+          ogDescription: result.data.includes('og:description'),
+          twitterDescription: result.data.includes('twitter:description'),
+        });
+      })
+      .catch((error) => {
+        res.status(500).json({ error: error.toString() });
+      });
+  })
   .get('/robots.txt', (req, res) => {
     res.send(`
 User-agent: *
