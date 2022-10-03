@@ -30,7 +30,7 @@ express()
         });
       })
       .catch((error) => {
-        res.status(500).json({ error: error.toString() });
+        res.status(500).json({ error: error.message });
       });
   })
   .get('/robots.txt', (req, res) => {
