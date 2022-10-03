@@ -8,7 +8,7 @@ const options = {
   responseType: 'text',
   headers: {
     Accept: 'text/html',
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36',
+    'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
   },
   maxRedirects: 5,
 };
